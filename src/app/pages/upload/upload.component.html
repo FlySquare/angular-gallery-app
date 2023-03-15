@@ -1,0 +1,37 @@
+<div class="content">
+ <div class="row">
+   <div class="col-12 col-md-8">
+     <form #uploadForm="ngForm" (ngSubmit)="uploadSubmit()" enctype="multipart/form-data">
+       <img src="/assets/logo.png" alt="logo">
+       <hr>
+       <div class="form-group">
+         <label for="password">Güvenlik Şifresi</label>
+         <input type="password" class="form-control" id="password" name="password" ngModel="" placeholder="Güvenlik Şifresi">
+       </div>
+       <hr>
+       <div class="form-group">
+         <label for="ownerName">Eser Sahibinin Adı</label>
+         <input type="text" class="form-control" id="ownerName" name="ownerName" ngModel="" placeholder="Eser Sahibinin Adı">
+       </div>
+       <hr>
+       <div class="form-group">
+         <label for="artName">Eserin Adı</label>
+         <input type="text" class="form-control" id="artName" name="artName" ngModel="" placeholder="Eserin Adı">
+       </div>
+       <hr>
+       <div class="form-group">
+         <label for="exampleFormControlFile1">Resim</label>
+         <br>
+         <input (change)="changeImagePreview($event)" type="file" class="form-control-file" name="file" ngModel="" id="exampleFormControlFile1">
+       </div>
+       <hr>
+       <button type="submit" class="btn btn-primary">Yükle</button>
+     </form>
+   </div>
+   <div class="right col-12 col-md-4">
+     <h1>Ön İzleme</h1>
+     <hr>
+     <img class="preview" [src]="imagePreview" alt="logo2">
+   </div>
+ </div>
+</div>

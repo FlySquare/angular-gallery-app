@@ -1,0 +1,56 @@
+<div class="content">
+  <div class="row">
+    <div class="left col-12 col-md-3">
+      <div class="yellowText">Yalova Üniversitesi</div>
+      <div class="title">Yalova'da<span>Yaşam</span></div>
+      <div class="yellowText">Fotoğraf Sergisi</div>
+      <div>16-20 Haziran 2023</div>
+    </div>
+    <div class="right col-12 col-md-9">
+      sağ
+    </div>
+  </div>
+  <div class="subTitles">
+    <p (click)="open(supportModal)">Destekleyenler</p>
+    <p (click)="open(organizationModal)">Organizasyon Komitesi</p>
+    <p (click)="open(participantsModal)">Katılımcılar</p>
+    <p (click)="openPDF()">Katalog</p>
+  </div>
+</div>
+
+<ng-template #supportModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Destekleyenler</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+   <app-support></app-support>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Kapat</button>
+  </div>
+</ng-template>
+<ng-template #organizationModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Organizasyon Komitesi</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-organization></app-organization>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Kapat</button>
+  </div>
+</ng-template>
+<ng-template #participantsModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title3">Katılımcılar</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-participants></app-participants>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Kapat</button>
+  </div>
+</ng-template>
