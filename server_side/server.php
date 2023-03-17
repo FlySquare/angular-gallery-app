@@ -12,10 +12,8 @@ if(isset($_GET['imageUpload'])){
         header("HTTP/1.1 401 Unauthorized");
         exit;
     }
-    if (isBase64($_POST['file'])){
-        $imageData = saveImageFromBase64($_POST['file']);
-        saveToJson($imageData, $_POST);
-    }
+    $imageData = saveImageFromBase64($_POST['file']);
+    saveToJson($imageData, $_POST);
     echo json_encode([
         'data' => [
             'status' => 'success',
@@ -23,12 +21,6 @@ if(isset($_GET['imageUpload'])){
         ]
     ]);
     exit;
-}
-function isBase64($value) {
-    if (preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $value)) {
-        return true;
-    }
-    return false;
 }
 if(isset($_GET['getImages'])){
     echo json_encode([
