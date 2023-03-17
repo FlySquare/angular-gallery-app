@@ -1,5 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+
 if(isset($_GET['imageUpload'])){
     if ($_POST['password'] != '123456') {
         echo json_encode([
@@ -11,29 +12,39 @@ if(isset($_GET['imageUpload'])){
         header("HTTP/1.1 401 Unauthorized");
         exit;
     }
-    $imageData = saveImageFromBase64($_POST['file']);
-    saveToJson($imageData, $_POST);
+    if (isBase64($_POST['file'])){
+        $imageData = saveImageFromBase64($_POST['file']);
+        saveToJson($imageData, $_POST);
+    }
     echo json_encode([
         'data' => [
             'status' => 'success',
             'message' => 'Image uploaded successfully'
-        ],
-        'meta'=> $_POST
+        ]
     ]);
+    exit;
 }
-
+function isBase64($value) {
+    if (preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $value)) {
+        return true;
+    }
+    return false;
+}
 if(isset($_GET['getImages'])){
-   echo getJson();
+    echo json_encode([
+        'data' => getJson()
+    ]);
+    exit;
 }
 
 function getJson(){
-    return file_get_contents('backend/images.json');
+    return json_decode(file_get_contents('backend/images.json'));
 }
 function saveToJson($imageData, $otherData){
     $newData = [
         'image' => $imageData[0],
-        'ownerName' => $otherData['ownerName'],
-        'artName' => $otherData['artName']
+        'ownerName' => mb_strlen($otherData['ownerName']) > 0 ? $otherData['ownerName'] : 'Bilinmiyor',
+        'artName' => mb_strlen($otherData['artName']) > 0 ? $otherData['artName'] : 'Bilinmiyor',
     ];
     $json = file_get_contents('backend/images.json');
     $data = json_decode($json, true);
@@ -58,3 +69,6 @@ function saveImageFromBase64($string){
         $uniqueName
     ];
 }
+
+header("HTTP/1.1 404 Not Found");
+exit;
