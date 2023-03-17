@@ -11,6 +11,8 @@ import {ParticipantsComponent} from './components/participants/participants.comp
 import {UploadComponent} from './pages/upload/upload.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { ImageZoomComponent } from './components/image-zoom/image-zoom.component';
+import { DeveloperComponent } from './components/developer/developer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {HttpClientModule} from "@angular/common/http";
     SupportComponent,
     OrganizationComponent,
     ParticipantsComponent,
-    UploadComponent
+    UploadComponent,
+    ImageZoomComponent,
+    DeveloperComponent
   ],
   imports: [
     BrowserModule,

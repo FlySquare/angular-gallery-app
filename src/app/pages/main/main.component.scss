@@ -1,5 +1,11 @@
 .content{
+  .row{
+    margin: unset;
+  }
   .subTitles{
+    @media only screen and (max-width: 545px){
+      display: block;
+    }
     p{
       margin: 10px;
       cursor: pointer;
@@ -19,6 +25,15 @@
   }
   .row{
     .left{
+      @media only screen and (max-width: 767px){
+        height: 150px;
+        div{
+          font-size: 18px!important;
+        }
+        .title{
+          font-size: 27px!important;
+        }
+      }
       .title{
         span{
           color: #FFF010;
@@ -32,7 +47,7 @@
         align-content: center;
         justify-content: center;
         align-items: center;
-        font-size: 2.5vw!important;
+        font-size: 2.5vw;
       }
       .yellowText{
         color: #FFF010;
@@ -47,11 +62,37 @@
       flex-direction: column;
       flex-wrap: nowrap;
       align-content: center;
+      overflow: hidden;
       justify-content: center;
       align-items: center;
     }
     .right{
-
+      .images{
+        ul{
+          li{
+            img{
+              max-height: 100%;
+              min-width: 100%;
+              object-fit: cover;
+              vertical-align: bottom;
+            }
+            height: 40vh;
+            flex-grow: 1;
+            margin: 5px;
+            list-style: none;
+          }
+          display: flex;
+          padding: 0;
+          flex-wrap: wrap;
+        }
+        width: 100%;
+      }
+      background: #2c2c2c;
+      white-space: nowrap;
+      height: 100vh;
+      text-overflow: ellipsis;
+      overflow: auto;
+      overflow-x: hidden;
     }
   }
 }

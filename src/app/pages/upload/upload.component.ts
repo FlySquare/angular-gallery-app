@@ -31,6 +31,8 @@ export class UploadComponent {
       this.globalService.uploadImage(formData).subscribe({
         next: (res: any) => {
           alert('Resim başarıyla yüklendi.');
+          this.uploadForm.reset();
+          this.imagePreview = '/assets/placeholder.png';
         },
         error: (err: any) => {
           console.log(err);

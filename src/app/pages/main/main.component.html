@@ -7,50 +7,38 @@
       <div>16-20 Haziran 2023</div>
     </div>
     <div class="right col-12 col-md-9">
-      sağ
+     <div class="images">
+      <ul>
+        <li (click)="open(imageZoomModal,'xl');openImage(art)" *ngFor="let art of arts">
+          <a href="javascript:void(0)">
+            <img alt="img1" [src]="imageSource+art.image" />
+          </a>
+        </li>
+      </ul>
+     </div>
     </div>
   </div>
   <div class="subTitles">
-    <p (click)="open(supportModal)">Destekleyenler</p>
+    <p (click)="open(supportModal,'lg')">Destekleyenler</p>
     <p (click)="open(organizationModal)">Organizasyon Komitesi</p>
-    <p (click)="open(participantsModal)">Katılımcılar</p>
-    <p (click)="openPDF()">Katalog</p>
+    <p (click)="open(participantsModal,'lg')">Katılımcılar</p>
+    <p (click)="open(developersModal)">Geliştirenler</p>
   </div>
 </div>
 
 <ng-template #supportModal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Destekleyenler</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-   <app-support></app-support>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Kapat</button>
-  </div>
+  <app-support [modal]="modal" ></app-support>
 </ng-template>
 <ng-template #organizationModal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title2">Organizasyon Komitesi</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <app-organization></app-organization>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Kapat</button>
-  </div>
+  <app-organization [modal]="modal"></app-organization>
 </ng-template>
 <ng-template #participantsModal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title3">Katılımcılar</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <app-participants></app-participants>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Kapat</button>
-  </div>
+  <app-participants [modal]="modal"></app-participants>
+</ng-template>
+<ng-template #developersModal let-modal>
+ <app-developer [modal]="modal"></app-developer>
+</ng-template>
+
+<ng-template #imageZoomModal let-modal>
+  <app-image-zoom [modal]="modal" [art]="selectedArt"></app-image-zoom>
 </ng-template>
